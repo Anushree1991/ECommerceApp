@@ -1,0 +1,11 @@
+<h1>Product List</h1>
+<% @categories.each do |c| %>
+<div id="category">
+	<% prod = c.products %>
+	<% prod.each do |p| %>
+		<% @products = p.name %>
+	<% end %>
+	<%= link_to c.name, list_products_path(@products) %>
+</div>
+<% end %>
+

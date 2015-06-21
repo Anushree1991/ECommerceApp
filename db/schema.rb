@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150619144255) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20150619152813) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -25,7 +22,7 @@ ActiveRecord::Schema.define(version: 20150619144255) do
   create_table "products", force: true do |t|
     t.string   "name"
     t.string   "image"
-    t.float    "price"
+    t.float    "price",       limit: 24
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "category_id"
