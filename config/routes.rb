@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  match '/list' to 'buyers#list' as 'list_products_path', via: :get
+  get '/list', to: 'buyers#list', as: 'list'
+  
    root 'home#index'
 
   # Example of regular route:

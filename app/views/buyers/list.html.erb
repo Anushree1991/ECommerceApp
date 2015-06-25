@@ -1,11 +1,32 @@
 <h1>Product List</h1>
-<% @categories.each do |c| %>
-<div id="category">
-	<% prod = c.products %>
-	<% prod.each do |p| %>
-		<% @products = p.name %>
-	<% end %>
-	<%= link_to c.name, list_products_path(@products) %>
-</div>
-<% end %>
 
+<h3>Categories</h3>
+<div style="float:left">
+	<% @categories.each do |category| %>
+		<%= link_to category.name, list_path(category_id: category.id) %>
+		</br>
+	<% end %>
+</div>
+
+<h3>Price Range</h3>
+<div style="float:left">
+	<%= form_tag product, do %>
+		<%= check_box_tag 'price', '1' %>
+		<%= label_tag(:price, "0-400") %></br>
+		<%= check_box_tag 'price', '2', true %>
+		<%= label_tag(:price, "401-600") %>
+	<% end %>
+</div>
+
+<h3>Products</h3>
+<div style="float:left">
+	<ul>
+		<% @display_products.each do |product| %>			
+			<li><%= product.name %></li>
+		<% end %>
+	</ul>	
+</div>
+
+$('input#product_price').live("click", function() {
+    $(this).parent('form').submit();
+});
