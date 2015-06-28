@@ -5,12 +5,9 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: mysql2 
-  username: root
+  adapter: postgresql
   password: anu
-  host: localhost
-  port: 3308
-
+  
 development:
   <<: *default
   database: ecommerce
