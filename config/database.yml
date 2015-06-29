@@ -6,6 +6,7 @@
 #
 default: &default
   adapter: postgresql
+  username: postgres
   password: anu
   host: localhost
   port: 5432
