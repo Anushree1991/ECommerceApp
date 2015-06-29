@@ -4,8 +4,10 @@ class CreateProducts < ActiveRecord::Migration
       t.string :name
       t.string :image
       t.float :price
-	  t.integer :category_id
+	  t.belongs_to :category
       t.timestamps
     end
+
+    add_index :products, :category_id
   end
 end
