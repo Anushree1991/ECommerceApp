@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'buyers/list'
-
+  
+  devise_for :users
   resources :categories
 
   get 'home/index'
@@ -11,8 +11,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  get '/list', to: 'buyers#list', as: 'list'
-  
+
    root 'home#index'
 
   # Example of regular route:
@@ -20,6 +19,9 @@ Rails.application.routes.draw do
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+      get 'buyers/list' => 'buyers#list', as: :list
+      post 'buyers/list' => 'buyers#list', as: :buyers_list
+      get 'products/:id/buy' => 'products#buy', as: :buy_product
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products

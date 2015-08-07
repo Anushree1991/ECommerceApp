@@ -28,6 +28,10 @@
     <% p f.object %>
     <%= f.select :category_id, options_for_select(categories_select, f.object.category_id) %>	
   </div>
+  <div class="field">
+    <%= f.label :count %><br>
+    <%= f.text_field :count %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

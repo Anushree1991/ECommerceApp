@@ -21,6 +21,16 @@ class ProductsController < ApplicationController
   def edit
   end
 
+  def buy
+    @product = Product.find(params[:id])
+    if @product.count > 0 
+      @print = "successfully placed order"
+      @count = @product.decrement(:count)
+    else
+      @print = "Out of stock"
+    end
+  end
+
   # POST /products
   # POST /products.json
   def create
@@ -69,6 +79,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :image, :price, :category_id)
+      params.require(:product).permit(:name, :image, :price, :category_id, :count)
     end
 end

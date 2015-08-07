@@ -2,31 +2,22 @@
 
 <h3>Categories</h3>
 <div style="float:left">
-	<% @categories.each do |category| %>
-		<%= link_to category.name, list_path(category_id: category.id) %>
-		</br>
+	<%= form_tag :id => 'myform' do %>
+		<% @categories.each do |category| %>
+			<%= check_box_tag "categories[]", category.id %>
+			<%= category.name %></br>
+		<% end %>
+		<%= submit_tag "Search" %>	
 	<% end %>
 </div>
 
-<h3>Price Range</h3>
-<div style="float:left">
-	<%= form_tag product, do %>
-		<%= check_box_tag 'price', '1' %>
-		<%= label_tag(:price, "0-400") %></br>
-		<%= check_box_tag 'price', '2', true %>
-		<%= label_tag(:price, "401-600") %>
-	<% end %>
-</div>
 
 <h3>Products</h3>
 <div style="float:left">
-	<ul>
-		<% @display_products.each do |product| %>			
-			<li><%= product.name %></li>
+	<ul>		
+		<% @products.each do |product| %>					
+			<li><%= product.name %></li>			
 		<% end %>
 	</ul>	
 </div>
 
-$('input#product_price').live("click", function() {
-    $(this).parent('form').submit();
-});
