@@ -1,0 +1,26 @@
+<h3>Order Details</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Product Name</th>
+      <th>Ordered User</th>
+      <th>Ordered Date</th>	    
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.product.name %></td>
+        <td><%= order.current_user %></td>
+        <td><%= order.current_date %></td>		    
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Back', products_path %>

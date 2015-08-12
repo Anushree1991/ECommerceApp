@@ -1,5 +1,5 @@
-class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+class ProductsController < ApplicationController  
+  before_action :set_product, only: [:show, :edit, :update, :destroy], except: [:order]
 
   # GET /products
   # GET /products.json
@@ -25,10 +25,16 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     if @product.count > 0 
       @print = "successfully placed order"
-      @count = @product.decrement(:count)
+      @product = @product.decrement(:count)
+      @product.save
+      @order = Order.create(:product_id => params[:id], :current_user => current_user.email, :current_date => Time.now)
     else
       @print = "Out of stock"
     end
+  end
+
+  def order
+    @orders = Order.all
   end
 
   # POST /products

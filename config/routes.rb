@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       get 'buyers/list' => 'buyers#list', as: :list
       post 'buyers/list' => 'buyers#list', as: :buyers_list
       get 'products/:id/buy' => 'products#buy', as: :buy_product
+      get 'product/order' => 'products#order', as: :order
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
